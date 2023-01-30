@@ -16,4 +16,8 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+    <style name="BlueChipChoice" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/background_color_blue_chip_state_list</item>
+        <item name="android:textColor">@color/text_color_chip_state_list</item>
+    </style>
 </resources>

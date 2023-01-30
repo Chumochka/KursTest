@@ -144,7 +144,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="19dp"
+                android:textSize="19sp"
                 android:textColor="@color/textColor"
                 android:text="Что вас беспокоит?"/>
             <com.google.android.material.chip.ChipGroup
@@ -153,44 +153,51 @@
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Головная боль"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Головная боль"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Слабость"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Слабость"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Насморк"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Насморк"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Головокружение"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Головокружение"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Звон в ушах"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Звон в ушах"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Повышенная температура"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Повышенная температура"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Боль в горле"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Боль в горле"
+                    android:textSize="16sp"/>
             </com.google.android.material.chip.ChipGroup>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textSize="19dp"
+                android:textSize="19sp"
                 android:textColor="@color/textColor"
                 android:text="Симптомы ЖКТ"/>
             <com.google.android.material.chip.ChipGroup
@@ -199,68 +206,140 @@
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Боль в животе"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Боль в животе"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Отрыжка"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Отрыжка"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Тошнота"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Тошнота"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Рвота"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Рвота"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Вздутие"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Вздутие"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Горечь во рту"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Горечь во рту"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Метеоризм"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Метеоризм"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Диарея"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Диарея"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Запор"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Запор"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Изжога"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Изжога"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Изменение цвета стула"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Изменение цвета стула"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Боль при дефекации"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Боль при дефекации"
+                    android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
-                    android:text="Кровь в стуле"/>
+                    style="@style/BlueChipChoice"
+                    android:text="Кровь в стуле"
+                    android:textSize="16sp"/>
+            </com.google.android.material.chip.ChipGroup>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Настроение и эмоции"
+                android:layout_marginTop="10dp"
+                android:textSize="19sp"
+                android:textColor="@color/textColor"/>
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Радость"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Бодрость"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Спокойствие"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Удовлетворенность"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Злость"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Апатия"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Страх"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Грусть"
+                    android:textSize="16sp"/>
             </com.google.android.material.chip.ChipGroup>
         </LinearLayout>
     </ScrollView>
