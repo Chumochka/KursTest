@@ -7,11 +7,11 @@
     android:layout_height="match_parent"
     tools:context=".AddActivity"
     android:orientation="vertical"
-    android:backgroundTint="@color/backgroundColor">
+    android:background="@color/backgroundColor">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/backgroundColor"
+        android:background="@color/backgroundColor"
         android:orientation="vertical">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -35,8 +35,9 @@
                 app:layout_constraintEnd_toEndOf="parent"/>
 
             <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:background="@color/backgroundColor"
                 android:src="@drawable/closebutton"
@@ -45,6 +46,7 @@
                 app:layout_constraintRight_toRightOf="parent"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
         <TextView
+            android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -148,6 +150,7 @@
                 android:textColor="@color/textColor"
                 android:text="Что вас беспокоит?"/>
             <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupWorries"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.google.android.material.chip.Chip
@@ -201,6 +204,7 @@
                 android:textColor="@color/textColor"
                 android:text="Симптомы ЖКТ"/>
             <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupTracts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.google.android.material.chip.Chip
@@ -290,6 +294,7 @@
                 android:textSize="19sp"
                 android:textColor="@color/textColor"/>
             <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupMoods"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <com.google.android.material.chip.Chip
@@ -341,6 +346,170 @@
                     android:text="Грусть"
                     android:textSize="16sp"/>
             </com.google.android.material.chip.ChipGroup>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ощущения"
+                android:layout_marginTop="10dp"
+                android:textSize="19sp"
+                android:textColor="@color/textColor"/>
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupFeels"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Тяжело дышать"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Не хватает воздуха"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Учащенное сердцебиение"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Тяжесть в груди"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Жар"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Замирание сердца"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Дрожь"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Потливость"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Напряжение"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Онемение конечностей"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Озноб"
+                    android:textSize="16sp"/>
+            </com.google.android.material.chip.ChipGroup>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Тревога"
+                android:layout_marginTop="10dp"
+                android:textSize="19sp"
+                android:textColor="@color/textColor"/>
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupAlarms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="true">
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Недолгая тревога"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Легкая тревога"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Тревожные мысли"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Сильнеая тревога"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Паника"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Паническая атака"
+                    android:textSize="16sp"/>
+            </com.google.android.material.chip.ChipGroup>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Заметка "
+                    android:textSize="19sp"
+                    android:textColor="@color/textColor"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="(Максимум 200 символов)"
+                    android:textColor="@color/textColor"/>
+            </LinearLayout>
+            <EditText
+                android:id="@+id/editTextNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Здесь вы можете написать свои заметки"
+                android:backgroundTint="@color/textColor"
+                android:maxLength="200"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipSave"
+                style="@style/Widget.MaterialComponents.Chip.Action"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="5dp"
+                android:text="Сохранить"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/blueButton"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
