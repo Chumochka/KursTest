@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         chipAdd = findViewById(R.id.chipAdd);
         chipWatch = findViewById(R.id.chipWatch);
         chipAnalyze = findViewById(R.id.chipAnalyze);
+        getLastDate();
         chipAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,10 +65,10 @@ public class MainActivity extends AppCompatActivity {
         Cursor query = db.rawQuery("SELECT date FROM Diary_Entries",null);
 
         tvLastDate = findViewById(R.id.tvLastDate);
-        if(query!=null){
-            query.moveToPosition(query.getCount()-1);
+        if(query.getCount()>0){
+            query.moveToLast();
             String dateString = query.getString(0);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MMM-dd");
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate date = LocalDate.parse(dateString,formatter);
             dateString = date.getDayOfMonth() + " ";
             switch (date.getMonthValue()){
