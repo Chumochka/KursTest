@@ -74,12 +74,6 @@ public class ViewActivity extends AppCompatActivity {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String dateString = date.format(formatter);
         SQLiteDatabase db = getBaseContext().openOrCreateDatabase("diary.db",MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS Diary_Entries (date TEXT PRIMARY KEY, health Text, note Text)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS Diary_Entries_Worries (date TEXT, worry TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS Diary_Entries_Tracts (date TEXT, tract TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS Diary_Entries_Moods (date TEXT, mood TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS Diary_Entries_Feels (date TEXT, feel TEXT)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS Diary_Entries_Alarms (date TEXT, alarm TEXT)");
         Cursor query = db.rawQuery("SELECT health,note FROM Diary_Entries WHERE date ='"+dateString+"'",null);
         Cursor queryWorry = db.rawQuery("SELECT worry FROM Diary_Entries_Worries WHERE date = '"+dateString+"'",null);
         Cursor queryTract = db.rawQuery("SELECT tract FROM Diary_Entries_Tracts WHERE date = '"+dateString+"'",null);
@@ -90,7 +84,7 @@ public class ViewActivity extends AppCompatActivity {
         String health = "";
         String note = "";
         if(query.getCount()>0){
-            query.moveToPosition(0);
+            query.moveToFirst();
             health = query.getString(0);
             note = query.getString(1);
         }
