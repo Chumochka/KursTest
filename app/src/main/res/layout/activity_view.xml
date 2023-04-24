@@ -143,7 +143,7 @@
                 android:id="@+id/tvTract"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ничего"
+                android:text="Отсутствуют"
                 android:textSize="19sp"
                 android:textColor="@color/radioColor"
                 android:textStyle="bold"/>
@@ -158,7 +158,7 @@
                 android:id="@+id/tvMood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ничего"
+                android:text="Отсутствует"
                 android:textSize="19sp"
                 android:textColor="@color/radioColor"
                 android:textStyle="bold"/>
@@ -173,7 +173,7 @@
                 android:id="@+id/tvFeel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ничего"
+                android:text="Отсутствуют"
                 android:textColor="@color/radioColor"
                 android:textSize="19sp"
                 android:textStyle="bold"/>
@@ -188,7 +188,7 @@
                 android:id="@+id/tvAlarm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ничего"
+                android:text="Отсутствует"
                 android:textColor="@color/radioColor"
                 android:textSize="19sp"
                 android:textStyle="bold"/>
