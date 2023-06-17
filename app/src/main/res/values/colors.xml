@@ -13,4 +13,6 @@
     <color name="dateColor">#4E609F</color>
     <color name="radioColor">#2856F8</color>
     <color name="chipBackground">#E5E5E5</color>
+    <color name="analiseBlockColor">#E0E7FF</color>
+    <color name="analiseNumTextColor">#002197</color>
 </resources>

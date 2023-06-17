@@ -187,13 +187,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/BlueChipChoice"
-                    android:text="Повышенная температура"
+                    android:text="Боль в горле"
                     android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/BlueChipChoice"
-                    android:text="Боль в горле"
+                    android:text="Повышенная температура"
                     android:textSize="16sp"/>
             </com.google.android.material.chip.ChipGroup>
             <TextView
@@ -332,6 +332,12 @@
                     android:layout_height="wrap_content"
                     style="@style/BlueChipChoice"
                     android:text="Апатия"
+                    android:textSize="16sp"/>
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/BlueChipChoice"
+                    android:text="Раздражение"
                     android:textSize="16sp"/>
                 <com.google.android.material.chip.Chip
                     android:layout_width="wrap_content"

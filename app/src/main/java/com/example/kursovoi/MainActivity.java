@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
         chipAnalyze.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(MainActivity.this, AnalyzeActivity.class);
+                startActivity(intent);
             }
         });
     }

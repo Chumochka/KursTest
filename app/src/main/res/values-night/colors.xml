@@ -5,4 +5,6 @@
     <color name="backgroundColor">#303030</color>
     <color name="dateColor">#7A97FC</color>
     <color name="chipBackground">#636363</color>
+    <color name="analiseBlockColor">#2444B4</color>
+    <color name="analiseNumTextColor">#FFFFFF</color>
 </resources>
