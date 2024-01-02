@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Дневник здоровья"
+                android:text="Анализ записей"
                 android:textAlignment="center"
                 android:textColor="@color/textColor"
                 android:textSize="20dp"

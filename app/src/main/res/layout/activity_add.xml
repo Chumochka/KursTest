@@ -500,9 +500,11 @@
             <EditText
                 android:id="@+id/editTextNote"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="160dp"
                 android:hint="Здесь вы можете написать свои заметки"
-                android:backgroundTint="@color/textColor"
+                android:background="@drawable/edittext_bg"
+                android:textColor="@color/textColor"
+                android:gravity="top"
                 android:maxLength="200"/>
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipSave"

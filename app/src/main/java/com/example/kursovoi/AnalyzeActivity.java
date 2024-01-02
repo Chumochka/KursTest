@@ -46,7 +46,7 @@ public class AnalyzeActivity extends AppCompatActivity {
         btnDateNext = findViewById(R.id.btnDateNext);
         btnBack = findViewById(R.id.btnBack);
         final LocalDate[] date = {LocalDate.now()};
-        loadActivity(date[0]);
+        loadActivity(date[0]);//загрузка информации за текущую дату
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,7 +69,7 @@ public class AnalyzeActivity extends AppCompatActivity {
             }
         });
     }
-    private void setDate(LocalDate date){
+    private void setDate(LocalDate date){//формирование строки выбранной даты
         tvDate = findViewById(R.id.tvDate);
         String dateString="";
         switch (date.getMonthValue()){
@@ -91,15 +91,15 @@ public class AnalyzeActivity extends AppCompatActivity {
     }
     private void loadActivity(LocalDate date) {
         setDate(date);
-        if (LocalDate.now().getMonth().equals(date.getMonth()))
-            btnDateNext.setVisibility(View.GONE);
+        if (LocalDate.now().getMonth().equals(date.getMonth()))//если выбрань текущий месяц
+            btnDateNext.setVisibility(View.GONE);//убрать кнопку выбора следующего месяца
         else
-            btnDateNext.setVisibility(View.VISIBLE);
+            btnDateNext.setVisibility(View.VISIBLE);//вернуть кнопку выбора следующего месяца
         LocalDate firstDay = date.withDayOfMonth(1);
-        LocalDate lastDay = date.withDayOfMonth(date.lengthOfMonth());
+        LocalDate lastDay = date.withDayOfMonth(date.lengthOfMonth());//получение первой и последней даты месяца
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String dateString = date.format(formatter);
-        SQLiteDatabase db = getBaseContext().openOrCreateDatabase("diary.db", MODE_PRIVATE, null);
+        SQLiteDatabase db = getBaseContext().openOrCreateDatabase("diary.db", MODE_PRIVATE, null);//поиск данных за выбранный период
         Cursor query = db.rawQuery("SELECT health FROM Diary_Entries WHERE date between '"+firstDay+"' and '"+lastDay+"'",null);
         Cursor queryWorry = db.rawQuery("SELECT worry FROM Diary_Entries_Worries WHERE date between '"+firstDay+"' and '"+lastDay+"'",null);
         Cursor queryTract = db.rawQuery("SELECT tract FROM Diary_Entries_Tracts WHERE date between '"+firstDay+"' and '"+lastDay+"'",null);
@@ -112,22 +112,22 @@ public class AnalyzeActivity extends AppCompatActivity {
         ArrayList<String> moodList = new ArrayList<>();
         ArrayList<String> feelList = new ArrayList<>();
         ArrayList<String> alarmList = new ArrayList<>();
-        while(query.moveToNext()){
+        while(query.moveToNext()){//загрузка данных в ArrayList
             healthList.add(query.getString(0));
         }
-        while(queryWorry.moveToNext()){
+        while(queryWorry.moveToNext()){//загрузка данных в ArrayList
             worryList.add(queryWorry.getString(0));
         }
-        while (queryTract.moveToNext()){
+        while (queryTract.moveToNext()){//загрузка данных в ArrayList
             tractList.add(queryTract.getString(0));
         }
-        while (queryMood.moveToNext()){
+        while (queryMood.moveToNext()){//загрузка данных в ArrayList
             moodList.add(queryMood.getString(0));
         }
-        while (queryFeel.moveToNext()){
+        while (queryFeel.moveToNext()){//загрузка данных в ArrayList
             feelList.add(queryFeel.getString(0));
         }
-        while (queryAlarms.moveToNext()){
+        while (queryAlarms.moveToNext()){//загрузка данных в ArrayList
             alarmList.add(queryAlarms.getString(0));
         }
         String health = "";
@@ -136,92 +136,92 @@ public class AnalyzeActivity extends AppCompatActivity {
         String mood = "";
         String feel = "";
         String alarm = "";
-        while(!healthList.isEmpty()) {
+        while(!healthList.isEmpty()) {//Если есть данные в ArrayList
             String currentElem = healthList.get(0);
-            if(health.isEmpty()){
-                health = currentElem +": " + writeWithDeclension(Collections.frequency(healthList,currentElem));
+            if(health.isEmpty()){//если в строке нет данных
+                health = currentElem +": " + writeWithDeclension(Collections.frequency(healthList,currentElem));//самочувствие + количество повторений этой записи в ArrayList
             }else{
-                health +="\n"+ currentElem +": " + writeWithDeclension(Collections.frequency(healthList,currentElem));
+                health +="\n"+ currentElem +": " + writeWithDeclension(Collections.frequency(healthList,currentElem));//аналогично
             }
-            while (healthList.remove(currentElem));
+            while (healthList.remove(currentElem));//удаление записей добавленного значения
         }
-        while(!worryList.isEmpty()) {
+        while(!worryList.isEmpty()) {//Если есть данные в ArrayList
             String currentElem = worryList.get(0);
-            if(worry.isEmpty()){
-                worry = currentElem +": " + writeWithDeclension(Collections.frequency(worryList,currentElem));
+            if(worry.isEmpty()){//если в строке нет данных
+                worry = currentElem +": " + writeWithDeclension(Collections.frequency(worryList,currentElem));//беспокойство + количество повторений этой записи в ArrayList
             }else{
-                worry +="\n"+ currentElem +": " + writeWithDeclension(Collections.frequency(worryList,currentElem));
+                worry +="\n"+ currentElem +": " + writeWithDeclension(Collections.frequency(worryList,currentElem));//аналогично
             }
-            while (worryList.remove(currentElem));
+            while (worryList.remove(currentElem));//удаление записей добавленного значения
         }
-        while(!tractList.isEmpty()) {
+        while(!tractList.isEmpty()) {//Если есть данные в ArrayList
             String currentElem = tractList.get(0);
-            if(tract.isEmpty()){
-                tract = currentElem +": " + writeWithDeclension(Collections.frequency(tractList,currentElem));
+            if(tract.isEmpty()){//если в строке нет данных
+                tract = currentElem +": " + writeWithDeclension(Collections.frequency(tractList,currentElem));//симптом ЖКТ + количество повторений этой записи в ArrayList
             }else{
-                tract +="\n"+ currentElem +": " + writeWithDeclension(Collections.frequency(tractList,currentElem));
+                tract +="\n"+ currentElem +": " + writeWithDeclension(Collections.frequency(tractList,currentElem));//аналогично
             }
-            while (tractList.remove(currentElem));
+            while (tractList.remove(currentElem));//удаление записей добавленного значения
         }
-        while(!moodList.isEmpty()) {
+        while(!moodList.isEmpty()) {//Если есть данные в ArrayList
             String currentElem = moodList.get(0);
-            if(mood.isEmpty()){
-                mood = currentElem +": " + writeWithDeclension(Collections.frequency(moodList,currentElem));
+            if(mood.isEmpty()){//если в строке нет данных
+                mood = currentElem +": " + writeWithDeclension(Collections.frequency(moodList,currentElem));//настроение + количество повторений этой записи в ArrayList
             }else{
-                mood +="\n"+ currentElem +": " + writeWithDeclension(Collections.frequency(moodList,currentElem));
+                mood +="\n"+ currentElem +": " + writeWithDeclension(Collections.frequency(moodList,currentElem));//аналогично
             }
-            while (moodList.remove(currentElem));
+            while (moodList.remove(currentElem));//удаление записей добавленного значения
         }
-        while(!feelList.isEmpty()) {
+        while(!feelList.isEmpty()) {//Если есть данные в ArrayList
             String currentElem = feelList.get(0);
-            if(feel.isEmpty()){
-                feel = currentElem +": " + writeWithDeclension(Collections.frequency(feelList,currentElem));
+            if(feel.isEmpty()){//если в строке нет данных
+                feel = currentElem +": " + writeWithDeclension(Collections.frequency(feelList,currentElem));//ощущение + количество повторений этой записи в ArrayList
             }else{
-                feel +="\n"+ currentElem +": " + writeWithDeclension(Collections.frequency(feelList,currentElem));
+                feel +="\n"+ currentElem +": " + writeWithDeclension(Collections.frequency(feelList,currentElem));//аналогично
             }
-            while (feelList.remove(currentElem));
+            while (feelList.remove(currentElem));//удаление записей добавленного значения
         }
-        while(!alarmList.isEmpty()) {
+        while(!alarmList.isEmpty()) {//Если есть данные в ArrayList
             String currentElem = alarmList.get(0);
-            if(alarm.isEmpty()){
-                alarm = currentElem +": " + writeWithDeclension(Collections.frequency(alarmList,currentElem));
+            if(alarm.isEmpty()){//если в строке нет данных
+                alarm = currentElem +": " + writeWithDeclension(Collections.frequency(alarmList,currentElem));//тревога + количество повторений этой записи в ArrayList
             }else{
-                alarm +="\n"+ currentElem +": " + writeWithDeclension(Collections.frequency(alarmList,currentElem));
+                alarm +="\n"+ currentElem +": " + writeWithDeclension(Collections.frequency(alarmList,currentElem));//аналогично
             }
-            while (alarmList.remove(currentElem));
+            while (alarmList.remove(currentElem));//удаление записей добавленного значения
         }
-        if(!health.isEmpty()){
+        if(!health.isEmpty()){//Если строка заполнена
             tvHealth.setText(health);
-        }else{
-            tvHealth.setText("Данные за период отсутсвуют");
+        }else{//Если нет данных
+            tvHealth.setText("Данные за период отсутствуют");
         }
-        if(!worry.isEmpty()){
+        if(!worry.isEmpty()){//Если строка заполнена
             tvWorry.setText(worry);
-        }else{
-            tvWorry.setText("Данные за период отсутсвуют");
+        }else{//Если нет данных
+            tvWorry.setText("Данные за период отсутствуют");
         }
-        if(!tract.isEmpty()){
+        if(!tract.isEmpty()){//Если строка заполнена
             tvTract.setText(tract);
-        }else{
-            tvTract.setText("Данные за период отсутсвуют");
+        }else{//Если нет данных
+            tvTract.setText("Данные за период отсутствуют");
         }
-        if(!mood.isEmpty()){
+        if(!mood.isEmpty()){//Если строка заполнена
             tvMood.setText(mood);
-        }else{
-            tvMood.setText("Данные за период отсутсвуют");
+        }else{//Если нет данных
+            tvMood.setText("Данные за период отсутствуют");
         }
-        if(!feel.isEmpty()){
+        if(!feel.isEmpty()){//Если строка заполнена
             tvFeel.setText(feel);
-        }else{
-            tvFeel.setText("Данные за период отсутсвуют");
+        }else{//Если нет данных
+            tvFeel.setText("Данные за период отсутствуют");
         }
-        if(!alarm.isEmpty()){
+        if(!alarm.isEmpty()){//Если строка заполнена
             tvAlarm.setText(alarm);
-        }else{
-            tvAlarm.setText("Данные за период отсутсвуют");
+        }else{//Если нет данных
+            tvAlarm.setText("Данные за период отсутствуют");
         }
     }
-    private String writeWithDeclension(int num){
+    private String writeWithDeclension(int num){//выбор склонения в зависимости от числа
         if(num%10==0 || num%10==1 || (num%10>=5 && num%10<=9) || (num%100>=10 && num%100<=20)){
             return num + " раз";
         }else{

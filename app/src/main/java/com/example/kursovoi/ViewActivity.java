@@ -42,7 +42,7 @@ public class ViewActivity extends AppCompatActivity {
         btnDateNext = findViewById(R.id.btnDateNext);
         btnBack = findViewById(R.id.btnBack);
         final LocalDate[] date = {LocalDate.now()};
-        loadActivity(date[0]);
+        loadActivity(date[0]);//загрузка информации за текущую дату
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,13 +67,13 @@ public class ViewActivity extends AppCompatActivity {
     }
     private void loadActivity(LocalDate date){
         setDate(date);
-        if(LocalDate.now().equals(date))
-            btnDateNext.setVisibility(View.GONE);
+        if(LocalDate.now().equals(date))//если выбранна текущая даты
+            btnDateNext.setVisibility(View.GONE);//Убрать кнопку выбора следующей даты
         else
-            btnDateNext.setVisibility(View.VISIBLE);
+            btnDateNext.setVisibility(View.VISIBLE);//Вернуть кнопку выбора следующей даты
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String dateString = date.format(formatter);
-        SQLiteDatabase db = getBaseContext().openOrCreateDatabase("diary.db",MODE_PRIVATE, null);
+        String dateString = date.format(formatter);//Преобразование даты в строку
+        SQLiteDatabase db = getBaseContext().openOrCreateDatabase("diary.db",MODE_PRIVATE, null);//получение данных за выбранную дату
         Cursor query = db.rawQuery("SELECT health,note FROM Diary_Entries WHERE date ='"+dateString+"'",null);
         Cursor queryWorry = db.rawQuery("SELECT worry FROM Diary_Entries_Worries WHERE date = '"+dateString+"'",null);
         Cursor queryTract = db.rawQuery("SELECT tract FROM Diary_Entries_Tracts WHERE date = '"+dateString+"'",null);
@@ -83,84 +83,84 @@ public class ViewActivity extends AppCompatActivity {
 
         String health = "";
         String note = "";
-        if(query.getCount()>0){
+        if(query.getCount()>0){//если есть записи
             query.moveToFirst();
-            health = query.getString(0);
+            health = query.getString(0);//заполнение инфо. о самочуствии и заметках
             note = query.getString(1);
         }
-        if (health.isEmpty())
-            tvHealth.setText("Нет записи");
+        if (health.isEmpty())//если нет записи о самочувствии
+            tvHealth.setText("Нет записи");//вывод, что нет записи
         else
-            tvHealth.setText(health);
-        if(note.isEmpty())
-            tvNote.setText("Пусто");
+            tvHealth.setText(health);//заполнение самочуствия
+        if(note.isEmpty())//если нет заметок
+            tvNote.setText("Пусто");//выводим пусто
         else
-            tvNote.setText(note);
+            tvNote.setText(note);//вывод заметки
 
         String worry= "";
-        for(int i =0; i<queryWorry.getCount();i++){
+        for(int i =0; i<queryWorry.getCount();i++){//получение всех записей о беспокойствах
             queryWorry.moveToPosition(i);
-            if (queryWorry.getString(0)!=null)
-                if(worry.isEmpty())
+            if (queryWorry.getString(0)!=null)//если есть значение
+                if(worry.isEmpty())//если строка о беспокойствах пуста
                     worry += queryWorry.getString(0);
-                else
+                else//если есть данные в строке
                     worry +="\n"+queryWorry.getString(0);
         }
-        if(worry.isEmpty())
+        if(worry.isEmpty())//если нет данных
             worry = "Ничего";
         tvWorry.setText(worry);
 
         String tract = "";
-        for(int i=0;i<queryTract.getCount();i++){
+        for(int i=0;i<queryTract.getCount();i++){//получение всех записей о симптомах ЖКТ
             queryTract.moveToPosition(i);
-            if(tract.isEmpty())
+            if(tract.isEmpty())//если строка о симптомах пуста
                 tract = queryTract.getString(0);
-            else
+            else//если есть данные в строке
                 tract += "\n" + queryTract.getString(0);
         }
-        if (tract.isEmpty())
+        if (tract.isEmpty())//если нет данных
             tract = "Ничего";
         tvTract.setText(tract);
 
         String mood = "";
-        for(int i=0;i<queryMood.getCount();i++){
+        for(int i=0;i<queryMood.getCount();i++){//получение всех записей о настроении
             queryMood.moveToPosition(i);
-            if(mood.isEmpty())
+            if(mood.isEmpty())//если строка о настроении пуста
                 mood = queryMood.getString(0);
-            else
+            else//если есть данные в строке
                 mood += "\n" + queryMood.getString(0);
         }
-        if (mood.isEmpty())
+        if (mood.isEmpty())//если нет данных
             mood = "Ничего";
         tvMood.setText(mood);
 
         String feel = "";
-        for(int i=0;i<queryFeel.getCount();i++){
+        for(int i=0;i<queryFeel.getCount();i++){//получение всех записей о ощущениях
             queryFeel.moveToPosition(i);
-            if(feel.isEmpty())
+            if(feel.isEmpty())//если строка о ощущениях пуста
                 feel = queryFeel.getString(0);
-            else
+            else//если есть данные в строке
                 feel += "\n" + queryFeel.getString(0);
         }
-        if (feel.isEmpty())
+        if (feel.isEmpty())//если нет данных
             feel = "Ничего";
         tvFeel.setText(feel);
 
         String alarm = "";
-        for (int i =0; i<queryAlarms.getCount();i++){
+        for (int i =0; i<queryAlarms.getCount();i++){//получение всех записей о тревоге
             queryAlarms.moveToPosition(i);
-            if(alarm.isEmpty())
+            if(alarm.isEmpty())//если строка о тревоге пуста
                 alarm = queryAlarms.getString(0);
-            else
+            else//если есть данные в строке
                 alarm += "\n" + queryAlarms.getString(0);
         }
-        if (alarm.isEmpty())
+        if (alarm.isEmpty())//если нет данных
             alarm = "Ничего";
         tvAlarm.setText(alarm);
     }
-    private void setDate(LocalDate date){
+    private void setDate(LocalDate date){//получение выбранной даты в виде строки
         tvDate = findViewById(R.id.tvDate);
-        String dateString = date.getDayOfMonth() + " ";
+        String dateString = date.getDayOfMonth() + " ";//формировние строки
         switch (date.getMonthValue()){
             case 1: dateString += "января "; break;
             case 2: dateString += "февраля "; break;
@@ -176,6 +176,6 @@ public class ViewActivity extends AppCompatActivity {
             case 12: dateString += "декабря "; break;
         }
         dateString+=date.getYear();
-        tvDate.setText(dateString);
+        tvDate.setText(dateString);//Установка полученной строки
     }
 }

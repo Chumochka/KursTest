@@ -80,63 +80,63 @@ public class AddActivity extends AppCompatActivity {
         chipSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String dateString = getDate();
-                if(rgFeel1.getCheckedRadioButtonId()!=-1 || rgFeel2.getCheckedRadioButtonId()!=-1){
+                String dateString = getDate();//Получение строки даты
+                if(rgFeel1.getCheckedRadioButtonId()!=-1 || rgFeel2.getCheckedRadioButtonId()!=-1){//выбрано самочувствие
                     int rbInt=-1;
-                    if(rgFeel1.getCheckedRadioButtonId()==-1){
-                        rbInt = rgFeel2.getCheckedRadioButtonId();
+                    if(rgFeel1.getCheckedRadioButtonId()==-1){//если есть выбранный RadioButton в первой группе
+                        rbInt = rgFeel2.getCheckedRadioButtonId();//получить id
                     }
-                    else{
-                        rbInt = rgFeel1.getCheckedRadioButtonId();
+                    else{//если есть во второй группе
+                        rbInt = rgFeel1.getCheckedRadioButtonId();//получить id
                     }
-                    RadioButton rb = findViewById(rbInt);
-                    String health = rb.getText().toString();
-                    String note = editTextNote.getText().toString();
+                    RadioButton rb = findViewById(rbInt);//получение RadioButton по id
+                    String health = rb.getText().toString();//Получение значения о самочуствии
+                    String note = editTextNote.getText().toString();//получение заметок
                     SQLiteDatabase db = getBaseContext().openOrCreateDatabase("diary.db", MODE_PRIVATE,null);
-                    db.execSQL("DELETE FROM Diary_Entries WHERE date = '"+dateString+"'");
+                    db.execSQL("DELETE FROM Diary_Entries WHERE date = '"+dateString+"'");//удаление всех записей за текущую дату
                     db.execSQL("DELETE FROM Diary_Entries_Worries WHERE date = '"+dateString+"'");
                     db.execSQL("DELETE FROM Diary_Entries_Tracts WHERE date = '"+dateString+"'");
                     db.execSQL("DELETE FROM Diary_Entries_Moods WHERE date = '"+dateString+"'");
                     db.execSQL("DELETE FROM Diary_Entries_Feels WHERE date = '"+dateString+"'");
                     db.execSQL("DELETE FROM Diary_Entries_Alarms WHERE date = '"+dateString+"'");
-                    db.execSQL("INSERT OR IGNORE INTO Diary_Entries VALUES ('"+ dateString +"', '"+health+"', '"+note+"')");
-                    List<Integer> idsChipWorries = chipGroupWorries.getCheckedChipIds();
-                    for (Integer id:idsChipWorries){
-                        Chip chip = chipGroupWorries.findViewById(id);
-                        db.execSQL("INSERT OR IGNORE INTO Diary_Entries_Worries VALUES ('"+dateString+"','"+chip.getText().toString()+"')");
+                    db.execSQL("INSERT OR IGNORE INTO Diary_Entries VALUES ('"+ dateString +"', '"+health+"', '"+note+"')");//Добавление инфо о самочуствии и заметках
+                    List<Integer> idsChipWorries = chipGroupWorries.getCheckedChipIds();//Получение списка id выбранных Chip
+                    for (Integer id:idsChipWorries){//Проход по всем id выбранных Chip
+                        Chip chip = chipGroupWorries.findViewById(id);//получение Chip
+                        db.execSQL("INSERT OR IGNORE INTO Diary_Entries_Worries VALUES ('"+dateString+"','"+chip.getText().toString()+"')");//Добавление инфо о беспокойствах
                     }
-                    List<Integer> idsChipTracts = chipGroupTracts.getCheckedChipIds();
-                    for (Integer id:idsChipTracts){
-                        Chip chip = chipGroupTracts.findViewById(id);
-                        db.execSQL("INSERT OR IGNORE INTO Diary_Entries_Tracts VALUES ('"+dateString+"','"+chip.getText().toString()+"')");
+                    List<Integer> idsChipTracts = chipGroupTracts.getCheckedChipIds();//Получение списка id выбранных Chip
+                    for (Integer id:idsChipTracts){//Проход по всем id выбранных Chip
+                        Chip chip = chipGroupTracts.findViewById(id);//получение Chip
+                        db.execSQL("INSERT OR IGNORE INTO Diary_Entries_Tracts VALUES ('"+dateString+"','"+chip.getText().toString()+"')");//Добавление инфо о симптомах ЖКТ
                     }
-                    List<Integer> idsChipMoods = chipGroupMoods.getCheckedChipIds();
-                    for (Integer id:idsChipMoods){
-                        Chip chip = chipGroupMoods.findViewById(id);
-                        db.execSQL("INSERT OR IGNORE INTO Diary_Entries_Moods VALUES ('"+dateString+"','"+chip.getText().toString()+"')");
+                    List<Integer> idsChipMoods = chipGroupMoods.getCheckedChipIds();//Получение списка id выбранных Chip
+                    for (Integer id:idsChipMoods){//Проход по всем id выбранных Chip
+                        Chip chip = chipGroupMoods.findViewById(id);//получение Chip
+                        db.execSQL("INSERT OR IGNORE INTO Diary_Entries_Moods VALUES ('"+dateString+"','"+chip.getText().toString()+"')");//Добавление инфо о настроении
                     }
-                    List<Integer> idsChipFeels = chipGroupFeels.getCheckedChipIds();
-                    for (Integer id:idsChipFeels){
-                        Chip chip = chipGroupFeels.findViewById(id);
-                        db.execSQL("INSERT OR IGNORE INTO Diary_Entries_Feels VALUES ('"+dateString+"','"+chip.getText().toString()+"')");
+                    List<Integer> idsChipFeels = chipGroupFeels.getCheckedChipIds();//Получение списка id выбранных Chip
+                    for (Integer id:idsChipFeels){//Проход по всем id выбранных Chip
+                        Chip chip = chipGroupFeels.findViewById(id);//получение Chip
+                        db.execSQL("INSERT OR IGNORE INTO Diary_Entries_Feels VALUES ('"+dateString+"','"+chip.getText().toString()+"')");//Добавление инфо о ощущении
                     }
-                    List<Integer> idsChipAlarms = chipGroupAlarms.getCheckedChipIds();
-                    for (Integer id:idsChipAlarms){
-                        Chip chip = chipGroupAlarms.findViewById(id);
-                        db.execSQL("INSERT OR IGNORE INTO Diary_Entries_Alarms VALUES ('"+dateString+"','"+chip.getText().toString()+"')");
+                    List<Integer> idsChipAlarms = chipGroupAlarms.getCheckedChipIds();//Получение списка id выбранных Chip
+                    for (Integer id:idsChipAlarms){//Проход по всем id выбранных Chip
+                        Chip chip = chipGroupAlarms.findViewById(id);//получение Chip
+                        db.execSQL("INSERT OR IGNORE INTO Diary_Entries_Alarms VALUES ('"+dateString+"','"+chip.getText().toString()+"')");//Добавление инфо о тревоге
                     }
-                    Intent intent = new Intent(AddActivity.this, MainActivity.class);
+                    Intent intent = new Intent(AddActivity.this, MainActivity.class);//переход на главную страницу
                     startActivity(intent);
-                }else{
+                }else{//если не указано самочувствие
                     Toast.makeText(getBaseContext(),"Укажите ваше самочувствие",Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
-    private void setDate(){
+    private void setDate(){//Установка текущей даты
         tvDate = findViewById(R.id.tvDate);
-        LocalDate date = LocalDate.now();
-        String dateString = date.getDayOfMonth() + " ";
+        LocalDate date = LocalDate.now();//получение текущей даты
+        String dateString = date.getDayOfMonth() + " ";//формирование строки даты
         switch (date.getMonthValue()){
             case 1: dateString += "января"; break;
             case 2: dateString += "февраля"; break;
@@ -151,15 +151,15 @@ public class AddActivity extends AppCompatActivity {
             case 11: dateString += "ноября"; break;
             case 12: dateString += "декабря"; break;
         }
-        tvDate.setText(dateString);
+        tvDate.setText(dateString);//установление строки даты в TextView
     }
-    private String getDate(){
+    private String getDate(){//получение текущей даты в формате
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         return LocalDate.now().format(formatter);
     }
-    private void setTodayInfo(){
+    private void setTodayInfo(){//установка информации из дневника за текущий день
         String date = getDate();//Получение даты в виде строки
-        SQLiteDatabase db = getBaseContext().openOrCreateDatabase("diary.db",MODE_PRIVATE, null);                   //Поиск данных в бд по сегодняшней дате
+        SQLiteDatabase db = getBaseContext().openOrCreateDatabase("diary.db",MODE_PRIVATE, null);//Поиск данных в бд по сегодняшней дате
         Cursor query = db.rawQuery("SELECT health,note FROM Diary_Entries WHERE date ='"+date+"'",null);
         Cursor queryWorry = db.rawQuery("SELECT worry FROM Diary_Entries_Worries WHERE date = '"+date+"'",null);
         Cursor queryTract = db.rawQuery("SELECT tract FROM Diary_Entries_Tracts WHERE date = '"+date+"'",null);
@@ -169,81 +169,81 @@ public class AddActivity extends AppCompatActivity {
         if(query.getCount()>0) {                //Если есть записи о здоровье и заметки
             query.moveToFirst();
             String health = query.getString(0);//Получаем значение
-            for (int id = 0; id < rgFeel1.getChildCount(); id++) {      //перебираем RadioButton в RadioGroup
-                RadioButton rb = (RadioButton) rgFeel1.getChildAt(id);  //Создаем экземпляр RadioButton
-                if (rb.getText().toString().contains(health)) {           //Если названия совпадают
-                    rb.setChecked(true);                                //Поставим как выбрано
+            for (int id = 0; id < rgFeel1.getChildCount(); id++) {//перебираем RadioButton в RadioGroup
+                RadioButton rb = (RadioButton) rgFeel1.getChildAt(id);//Создаем экземпляр RadioButton
+                if (rb.getText().toString().contains(health)) {//Если названия совпадают
+                    rb.setChecked(true);//Поставим как выбрано
                     break;
                 }
             }
-            for (int id = 0; id < rgFeel2.getChildCount(); id++) {      //перебираем RadioButton в RadioGroup
-                RadioButton rb = (RadioButton) rgFeel2.getChildAt(id);  //Создаем экземпляр RadioButton
-                if (rb.getText().toString().contains(health)) {         //Если названия совпадают
-                    rb.setChecked(true);                                //Поставим как выбрано
+            for (int id = 0; id < rgFeel2.getChildCount(); id++) {//перебираем RadioButton в RadioGroup
+                RadioButton rb = (RadioButton) rgFeel2.getChildAt(id);//Создаем экземпляр RadioButton
+                if (rb.getText().toString().contains(health)) {//Если названия совпадают
+                    rb.setChecked(true);//Поставим как выбрано
                     break;
                 }
             }
-            editTextNote.setText(query.getString(1));               //Вставка заметок в EditText
+            editTextNote.setText(query.getString(1));//Вставка заметок в EditText
         }
-        if (queryWorry.getCount()>0) {                                //Если есть записи о беспокойствах
-            queryWorry.moveToFirst();                                 //Переходим к первой строке
-            ArrayList<String> worries = new ArrayList<>();              //Создаем массив для списка беспокойств
+        if (queryWorry.getCount()>0) {//Если есть записи о беспокойствах
+            queryWorry.moveToFirst();//Переходим к первой строке
+            ArrayList<String> worries = new ArrayList<>();//Создаем массив для списка беспокойств
             do {
-                worries.add(queryWorry.getString(0));               //Добавляем в массив беспокойство
-            } while (queryWorry.moveToNext());                          //Пока есть записи
+                worries.add(queryWorry.getString(0));//Добавляем в массив беспокойство
+            } while (queryWorry.moveToNext());//Пока есть записи
             for (int id = 0; id < chipGroupWorries.getChildCount(); id++) {//Перебор всех Chip в ChipGroup
-                Chip chip = (Chip) chipGroupWorries.getChildAt(id);         //Получение экземпляра Chip
-                if (worries.contains(chip.getText().toString())) {          //Если названия совпадают
-                    chip.setChecked(true);                                  //Поставим как выбрано
+                Chip chip = (Chip) chipGroupWorries.getChildAt(id);//Получение экземпляра Chip
+                if (worries.contains(chip.getText().toString())) {//Если названия совпадают
+                    chip.setChecked(true);//Поставим как выбрано
                 }
             }
         }
-        if (queryTract.getCount()>0) {                                //Если есть записи о ЖКТ
-            queryTract.moveToFirst();                                 //Переходим к первой строке
-            ArrayList<String> tracts = new ArrayList<>();              //Создаем массив для списка симптомов ЖКТ
+        if (queryTract.getCount()>0) {//Если есть записи о ЖКТ
+            queryTract.moveToFirst();//Переходим к первой строке
+            ArrayList<String> tracts = new ArrayList<>();//Создаем массив для списка симптомов ЖКТ
             do {
-                tracts.add(queryTract.getString(0));               //Добавляем в массив симптом ЖКТ
-            } while (queryTract.moveToNext());                          //Пока есть записи
+                tracts.add(queryTract.getString(0));//Добавляем в массив симптом ЖКТ
+            } while (queryTract.moveToNext());//Пока есть записи
             for (int id = 0; id < chipGroupTracts.getChildCount(); id++) {//Перебор всех Chip в ChipGroup
-                Chip chip = (Chip) chipGroupTracts.getChildAt(id);         //Получение экземпляра Chip
-                if (tracts.contains(chip.getText().toString())) {          //Если названия совпадают
-                    chip.setChecked(true);                                  //Поставим как выбрано
+                Chip chip = (Chip) chipGroupTracts.getChildAt(id);//Получение экземпляра Chip
+                if (tracts.contains(chip.getText().toString())) {//Если названия совпадают
+                    chip.setChecked(true);//Поставим как выбрано
                 }
             }
         }
-        if (queryMood.getCount()>0) {                                //Если есть записи о настроении
-            queryMood.moveToFirst();                                 //Переходим к первой строке
-            ArrayList<String> moods = new ArrayList<>();              //Создаем массив для списка настроения
+        if (queryMood.getCount()>0) {//Если есть записи о настроении
+            queryMood.moveToFirst();//Переходим к первой строке
+            ArrayList<String> moods = new ArrayList<>();//Создаем массив для списка настроения
             do {
-                moods.add(queryMood.getString(0));               //Добавляем в массив настроение
-            } while (queryMood.moveToNext());                          //Пока есть записи
+                moods.add(queryMood.getString(0));//Добавляем в массив настроение
+            } while (queryMood.moveToNext());//Пока есть записи
             for (int id = 0; id < chipGroupMoods.getChildCount(); id++) {//Перебор всех Chip в ChipGroup
-                Chip chip = (Chip) chipGroupMoods.getChildAt(id);         //Получение экземпляра Chip
-                if (moods.contains(chip.getText().toString())) {          //Если названия совпадают
-                    chip.setChecked(true);                                  //Поставим как выбрано
+                Chip chip = (Chip) chipGroupMoods.getChildAt(id);//Получение экземпляра Chip
+                if (moods.contains(chip.getText().toString())) {//Если названия совпадают
+                    chip.setChecked(true);//Поставим как выбрано
                 }
             }
         }
-        if (queryFeel.getCount()>0) {                                //Если есть записи об ощущениях
-            queryFeel.moveToFirst();                                 //Переходим к первой строке
-            ArrayList<String> feels = new ArrayList<>();              //Создаем массив для списка ощущений
+        if (queryFeel.getCount()>0) {//Если есть записи об ощущениях
+            queryFeel.moveToFirst();//Переходим к первой строке
+            ArrayList<String> feels = new ArrayList<>();//Создаем массив для списка ощущений
             do {
-                feels.add(queryFeel.getString(0));               //Добавляем в массив ощущений
-            } while (queryFeel.moveToNext());                          //Пока есть записи
+                feels.add(queryFeel.getString(0));//Добавляем в массив ощущений
+            } while (queryFeel.moveToNext());//Пока есть записи
             for (int id = 0; id < chipGroupFeels.getChildCount(); id++) {//Перебор всех Chip в ChipGroup
-                Chip chip = (Chip) chipGroupFeels.getChildAt(id);         //Получение экземпляра Chip
-                if (feels.contains(chip.getText().toString())) {          //Если названия совпадают
-                    chip.setChecked(true);                                  //Поставим как выбрано
+                Chip chip = (Chip) chipGroupFeels.getChildAt(id);//Получение экземпляра Chip
+                if (feels.contains(chip.getText().toString())) {//Если названия совпадают
+                    chip.setChecked(true);//Поставим как выбрано
                 }
             }
         }
-        if (queryAlarms.getCount()>0) {                                //Если есть записи об ощущениях
-            queryAlarms.moveToFirst();                                 //Переходим к первой строке
+        if (queryAlarms.getCount()>0) {//Если есть записи об ощущениях
+            queryAlarms.moveToFirst();//Переходим к первой строке
             String alarm = queryAlarms.getString(0);
             for (int id = 0; id < chipGroupAlarms.getChildCount(); id++) {//Перебор всех Chip в ChipGroup
-                Chip chip = (Chip) chipGroupAlarms.getChildAt(id);         //Получение экземпляра Chip
-                if (alarm.contains(chip.getText().toString())) {          //Если названия совпадают
-                    chip.setChecked(true);                                  //Поставим как выбрано
+                Chip chip = (Chip) chipGroupAlarms.getChildAt(id);//Получение экземпляра Chip
+                if (alarm.contains(chip.getText().toString())) {//Если названия совпадают
+                    chip.setChecked(true);//Поставим как выбрано
                     break;
                 }
             }

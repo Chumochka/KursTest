@@ -18,10 +18,11 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView tvLastDate;
     private Chip chipAdd;
     private Chip chipWatch;
     private Chip chipAnalyze;
-    private TextView tvLastDate;
+    private Chip chipAppointments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         chipAdd = findViewById(R.id.chipAdd);
         chipWatch = findViewById(R.id.chipWatch);
         chipAnalyze = findViewById(R.id.chipAnalyze);
+        chipAppointments = findViewById(R.id.chipAppointment);
         getLastDate();
         chipAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +54,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        chipAppointments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, ListAppointmentsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     private void getLastDate(){
         SQLiteDatabase db = getBaseContext().openOrCreateDatabase("diary.db",MODE_PRIVATE, null);
@@ -62,15 +71,15 @@ public class MainActivity extends AppCompatActivity {
         db.execSQL("CREATE TABLE IF NOT EXISTS Diary_Entries_Feels (date TEXT, feel TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS Diary_Entries_Alarms (date TEXT, alarm TEXT)");
 
-        Cursor query = db.rawQuery("SELECT date FROM Diary_Entries",null);
+        Cursor query = db.rawQuery("SELECT date FROM Diary_Entries",null);//получение списка дат
 
         tvLastDate = findViewById(R.id.tvLastDate);
-        if(query.getCount()>0){
-            query.moveToLast();
-            String dateString = query.getString(0);
+        if(query.getCount()>0){//если есть данные
+            query.moveToLast();//перейти к последнему
+            String dateString = query.getString(0);//получение даты
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-            LocalDate date = LocalDate.parse(dateString,formatter);
-            dateString = date.getDayOfMonth() + " ";
+            LocalDate date = LocalDate.parse(dateString,formatter);//переход из строки в дату
+            dateString = date.getDayOfMonth() + " ";//формирование строки для вывода
             switch (date.getMonthValue()){
                 case 1: dateString += "января "; break;
                 case 2: dateString += "февраля "; break;

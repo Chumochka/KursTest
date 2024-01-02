@@ -36,16 +36,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="19sp"
+                    android:textSize="18.5sp"
                     android:textColor="@color/textColor"
                     android:text="Последняя запись – "/>
                 <TextView
                     android:id="@+id/tvLastDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="18.5sp"
                     android:textColor="@color/textColor"
-                    android:text="не было."/>
+                    android:text="нет данных."/>
             </LinearLayout>
 
             <com.google.android.material.chip.Chip
@@ -77,6 +77,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:text="Аналитика записей"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:backgroundTint="@color/blueButton"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipAppointment"
+                style="@style/Widget.MaterialComponents.Chip.Action"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="Список записей"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="20sp"
