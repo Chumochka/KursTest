@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private Chip chipWatch;
     private Chip chipAnalyze;
     private Chip chipAppointments;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         chipWatch = findViewById(R.id.chipWatch);
         chipAnalyze = findViewById(R.id.chipAnalyze);
         chipAppointments = findViewById(R.id.chipAppointment);
+        Bundle extras = getIntent().getExtras();
+        if(extras.getInt("id")==-1 || extras.getString("name").isEmpty())
+            chipAppointments.setVisibility(View.GONE);
         getLastDate();
         chipAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ListAppointmentsActivity.class);
+                intent.putExtra("id",extras.getInt("id"));
+                intent.putExtra("name", extras.getString("name"));
                 startActivity(intent);
             }
         });

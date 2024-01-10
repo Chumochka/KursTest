@@ -22,14 +22,18 @@ public class ListAppointmentsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_appointments);
+        tvUser = findViewById(R.id.tvUser);
         btnBack = findViewById(R.id.btnBack);
         scrollAppointments = findViewById(R.id.scrollAppointments);
         chipAddAppointment = findViewById(R.id.chipAddAppointment);
+        Bundle extras = getIntent().getExtras();
+        int id = extras.getInt("id");
+        String name = extras.getString("name");
+        tvUser.setText(name);
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ListAppointmentsActivity.this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
         chipAddAppointment.setOnClickListener(new View.OnClickListener() {

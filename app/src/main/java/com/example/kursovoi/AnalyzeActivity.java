@@ -50,8 +50,7 @@ public class AnalyzeActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AnalyzeActivity.this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
         btnDateBack.setOnClickListener(new View.OnClickListener() {

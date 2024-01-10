@@ -46,8 +46,7 @@ public class ViewActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ViewActivity.this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
         btnDateBack.setOnClickListener(new View.OnClickListener() {
