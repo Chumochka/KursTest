@@ -60,10 +60,16 @@
             android:layout_marginHorizontal="10dp"/>
     </LinearLayout>
     <ScrollView
-        android:id="@+id/scrollAppointments"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1">
+        <LinearLayout
+            android:id="@+id/containerAppointments"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="15dp"/>
+    </ScrollView>
     <com.google.android.material.chip.Chip
         android:id="@+id/chipAddAppointment"
         style="@style/Widget.MaterialComponents.Chip.Action"

@@ -7,7 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class fetchData extends AsyncTask<String, Void, String> {
-    String urlString = "https://837b-37-193-14-146.ngrok-free.app";
+    String urlString = "https://e578-37-193-14-146.ngrok-free.app";
     @Override
     protected String doInBackground(String... strings) {
         try {
