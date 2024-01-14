@@ -87,17 +87,18 @@ public class LoginActivity extends AppCompatActivity {
             surname = obj.getString("surname");
             name = obj.getString("name");
             patronymic = obj.getString("patronymic");
+            String fullName = surname+" "+name.charAt(0)+".";
+            if(!patronymic.isEmpty())
+                fullName += patronymic.charAt(0)+".";
+            if(login.isEmpty() && password.isEmpty())
+                db.execSQL("INSERT OR IGNORE INTO Login_Details VALUES ('"+etLogin.getText().toString()+"','"+etPassword.getText().toString()+"')");
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            intent.putExtra("id",id);
+            intent.putExtra("name", fullName);
+            startActivity(intent);
         } catch (Exception e) {
+            Toast.makeText(getApplicationContext(),"Не получается авторизоваться в системе.", Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
-        String fullName = surname+" "+name.charAt(0)+".";
-        if(!patronymic.isEmpty())
-            fullName += patronymic.charAt(0)+".";
-        if(login.isEmpty() && password.isEmpty())
-            db.execSQL("INSERT OR IGNORE INTO Login_Details VALUES ('"+etLogin.getText().toString()+"','"+etPassword.getText().toString()+"')");
-        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-        intent.putExtra("id",id);
-        intent.putExtra("name", fullName);
-        startActivity(intent);
     }
 }
