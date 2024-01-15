@@ -120,7 +120,7 @@ public class AddAppointmentActivity extends AppCompatActivity {
                     String a = doctorList[doctorPosition][0];
                     int id_doctor = Integer.parseInt(a);
                     try {
-                        JSONObject json = new JSONObject("{\"id_appointment\": 0, \"id_patient\": "+id+",\"id_doctor\": "+id_doctor+", \"date_wish\": "+date_wish+", \"date\": null, \"cabinet\": null}");
+                        JSONObject json = new JSONObject("{\"id_appointment\": 0, \"id_patient\": "+id+",\"id_doctor\": "+id_doctor+", \"date_wish\": \""+date_wish+"\", \"date\": null, \"cabinet\": null}");
                         String response = new fetchData().execute("/appointment", "POST", json.toString()).get();
                         if(response.equals("null")) {
                             Toast.makeText(getApplicationContext(), "Не удалось добавить запись",Toast.LENGTH_LONG).show();
